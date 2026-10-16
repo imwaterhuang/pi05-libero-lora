@@ -13,6 +13,20 @@
 
 抽屉任务指 `pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate`。
 
+## 回放（2 倍速）
+
+| LoRA：抽屉任务失败 | 定向补强后：抽屉任务成功 |
+|---|---|
+| ![](videos/drawer_lora_failure.gif) | ![](videos/drawer_after_success.gif) |
+| 夹爪一侧手指卡在抽屉边缘，夹不到碗，直到超时 | 同一任务，补强后一次抓起并放到盘子上 |
+
+| 判定失败：放进盘子但偏离中心 | 遗忘：补强后原本全对的任务出现失败 |
+|---|---|
+| ![](videos/cookiebox_offcenter_failure.gif) | ![](videos/ramekin_forgetting_failure.gif) |
+| 饼干盒旁边的碗被放到盘子边缘，中心距离超过 3cm，不算成功 | ramekin 上的碗被搬到盘子处，但没有完成放置判定，在盘子附近反复调整直到超时 |
+
+原始 mp4 在 `videos/` 下。
+
 ## 1. 基线与 LoRA 微调
 
 - 基座：`pi05_base`，LoRA 变体 `gemma_2b_lora`（rank 16）+ `gemma_300m_lora`（rank 32），`ema_decay=None`。
